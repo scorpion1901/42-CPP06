@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 10:38:34 by radlouni          #+#    #+#             */
-/*   Updated: 2025/10/30 16:56:14 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:36:15 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ private:
 public:
     static void convert(std::string const &literal);
 };
+
+int parsing(std::string str);
 
 #endif

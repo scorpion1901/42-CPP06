@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 10:37:35 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/02 20:38:43 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:51:21 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int whats_the(std::string str)
     i = 0;
     while (str[i] != '\0')
     {
-        if (str[i] > 47 && str[i] < 58 || str[i] == '.')
+        if ((str[i] > 47 && str[i] < 58) || str[i] == '.')
         {
             i++;
         }
@@ -43,7 +43,7 @@ int whats_the(std::string str)
     i = 0;
     while (str[i] != '\0')
     {
-         if (str[i] < 48 && str[i] > 57)
+         if (str[i] < 48 || str[i] > 57)
         {
             i++;
         }
@@ -52,7 +52,6 @@ int whats_the(std::string str)
         return (3);
     return (0);
 }
-
 
 int main(void)
 {
@@ -63,7 +62,14 @@ int main(void)
     
     if (!std::getline(std::cin, cmd))
         std::exit(1);
+    std::cout << "cmd = " << cmd << std::endl;
+    if (!parsing(cmd))
+    {
+        std::cout << "probleme parsing" << std::endl;
+        return (0);
+    }
     choice = whats_the(cmd);
+    std::cout << "choice = " << choice << std::endl;
     if (choice == 1)
     {
         nb = std::atoi(cmd.c_str());
@@ -115,12 +121,8 @@ int main(void)
             std::cout << "double = " << static_cast<double>(nb2) << std::endl;
         }
     }
-        
-    for(int i = 0; cmd[i] != '\0'; i++)
-    {
-        
-    }
-        
+    else
+        std::cout << "probleme parsing = " << cmd << std::endl;
     
     
     
