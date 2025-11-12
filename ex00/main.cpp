@@ -6,125 +6,99 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 10:37:35 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/03 21:51:21 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:58:57 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
+double toDouble(const std::string& str)
+{
+    std::stringstream ss(str);
+    double d;
+    ss >> d;
+    if (ss.fail())
+    {
+        std::cout << "conversion to double fail" << std::endl;
+    }
+    return d;
+}
+
 int whats_the(std::string str)
 {
     int i = 0;
+    int tab[256] = {0};
     while (str[i] != '\0')
     {
-        if (str[i] > 47 && str[i] < 58)
-        {
-            i++;
-        }
+        if (str[i] == '.' && tab[static_cast<int>(str[i])] == 0)
+            tab[static_cast<int>(str[i])] = 1;
+        else if (str[i] == '.' && tab[static_cast<int>(str[i])] == 1)
+            return (0);
         else if (str[i] == 'f' && str[i + 1] == '\0')
             return (2);
-        else
-            break;
+        i++;
     }
     if (str[i] == '\0')
         return (1);
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if ((str[i] > 47 && str[i] < 58) || str[i] == '.')
-        {
-            i++;
-        }
-        else if (str[i] == 'f' && str[i + 1] == '\0')
-            return (2);
-        else
-            break;
-    }
-    i = 0;
-    while (str[i] != '\0')
-    {
-         if (str[i] < 48 || str[i] > 57)
-        {
-            i++;
-        }
-    }
-    if (str[i] == '\0')
-        return (3);
+    
     return (0);
 }
+
+
 
 int main(void)
 {
     std::string cmd;
-    int choice;
-    int nb;
-    float   nb2;
+    int nb = 0;
+    double nb2 = 0;
     
     if (!std::getline(std::cin, cmd))
         std::exit(1);
-    std::cout << "cmd = " << cmd << std::endl;
     if (!parsing(cmd))
     {
         std::cout << "probleme parsing" << std::endl;
         return (0);
     }
-    choice = whats_the(cmd);
-    std::cout << "choice = " << choice << std::endl;
-    if (choice == 1)
+    if ((cmd[0] < 48 || cmd[0] > 57) && cmd[1] == '\0')
+        nb2 = static_cast<int>(cmd[0]);
+    else if (whats_the(cmd) == 1 || whats_the(cmd) == 2)
     {
-        nb = std::atoi(cmd.c_str());
-        if (nb == 0)
-        {
-            std::cout << "char = Non displayable" << std::endl;
-            std::cout << "int = 0" << std::endl;
-            std::cout << "float = 0.0f" << std::endl;
-            std::cout << "double = 0.0" << std::endl;
-        }
-        else if (nb > 126 || nb < 0)
-        {
-            std::cout << "char = impossible" << std::endl;
-            std::cout << "int = " << nb << std::endl;
-            std::cout << "float = " << static_cast<float>(nb) << std::endl;
-            std::cout << "double = " << static_cast<double>(nb) << std::endl;
-        }
-        else
-        {
-            std::cout << "char = " << static_cast<char>(nb) << std::endl;
-            std::cout << "int = " << nb << std::endl;
-            std::cout << "float = " << static_cast<float>(nb) << std::endl;
-            std::cout << "double = " << static_cast<double>(nb) << std::endl;
-        }
+        nb2 = toDouble(cmd);
     }
-    else if (choice == 2)
+    else if (whats_the(cmd) == 0)
     {
-        nb2 = std::atof(cmd.c_str());
-        nb = static_cast<int>(nb2);
-        if (nb2 == 0.0f)
-        {
-            std::cout << "char = impossible" << std::endl;
-            std::cout << "int = 0" << std::endl;
-            std::cout << "float = 0.0f" << std::endl;
-            std::cout << "double = 0.0" << std::endl;
-        }
-        else if (nb > 126 || nb < 0)
-        {
-            std::cout << "char = impossible" << std::endl;
-            std::cout << "int = " << nb << std::endl;
-            std::cout << "float = " << nb2 << std::endl;
-            std::cout << "double = " << static_cast<double>(nb2) << std::endl;
-        }
-        else
-        {
-            std::cout << "char = " << static_cast<char>(nb) << std::endl;
-            std::cout << "int = " << nb << std::endl;
-            std::cout << "float = " << nb2 << std::endl;
-            std::cout << "double = " << static_cast<double>(nb2) << std::endl;
-        }
+        std::cout << "too much charactere" << std::endl;
+        return (0);
     }
     else
-        std::cout << "probleme parsing = " << cmd << std::endl;
-    
-    
-    
+        nb2 = std::atoi(cmd.c_str());
+    if (nb2 == 0.0)
+    {
+        std::cout << "char = Non displayable" << std::endl;
+        std::cout << "int = 0" << std::endl;
+        std::cout << "float = 0.0f" << std::endl;
+        std::cout << "double = 0.0" << std::endl;
+    }
+    else
+    {
+        if (nb2 > 32 && nb2 < 127)
+            std::cout << "char = " << static_cast<char>(nb2) << std::endl;
+        else if (nb > 127 || nb < 0)
+            std::cout << "char = impossible" << std::endl;
+        else
+            std::cout << "char = Non displayable" << std::endl;
+        if (nb2 > INT_MAX || nb2 < INT_MIN)
+            std::cout << "int = impossible" << std::endl;
+        else
+            std::cout << "int = " << static_cast<int>(nb2) << std::endl;
+        if (nb2 > FLT_MAX || nb2 < -FLT_MAX)
+            std::cout << "float = impossible" << std::endl;
+        else
+            std::cout << "float = " << static_cast<float>(nb2) << "f" << std::endl;
+        if (nb2 > DBL_MAX || nb2 < -DBL_MAX)
+            std::cout << "double = impossible" << std::endl;
+        else
+            std::cout << "double = " << nb2 << std::endl;
+    }
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 10:38:34 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/03 21:36:15 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/12 16:53:24 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib>
+#include <sstream>
+#include <climits>
+#include <cfloat>
+
 
 class ScalarConverter {
 private:
