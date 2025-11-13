@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:52:14 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/12 20:01:40 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/13 13:15:24 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ static int no_printable(std::string str)
 
 static int more_of_2char(std::string str)
 {
-    if ((str[0] < 48 || str[0] > 57) && str[1])
+    if ((str[0] < 48 || str[0] > 57) && str[0] != '-' && str[0] != '+' && str[1])
+        return (0);
+    if ((str[0] == '-' || str[0] == '+') && str[1] == '\0')
         return (0);
     return (1);
 }
 
 static int check_inside(std::string str)
 {
-    for (int i = 0; str[i] != 0; i++)
+    for (int i = 1; str[i] != 0; i++)
     {
         if ((str[i] < 48 || str[i] > 57) && str[i] != '.')
         {
@@ -47,7 +49,7 @@ static int check_inside(std::string str)
     return (1);
 }
 
-static void    CasSpeciaux(std::string str)
+static void    SpecialCase(std::string str)
 {
     if (str == "nanf")
     {
@@ -84,12 +86,12 @@ int parsing(std::string str)
 {
     if (!no_printable(str))
         return (0);
+    if (str == "nanf" || str == "nan" || str == "+inff"
+        || str == "+inf" || str == "-inff" || str == "-inf")
+            SpecialCase(str);
     if (!more_of_2char(str))
         return (0);
     if (!check_inside(str))
         return (0);
-    if (str == "nanf" || str == "nan" || str == "+inff"
-        || str == "+inf" || str == "-inff" || str == "-inf")
-            CasSpeciaux(str);
     return (1);
 }

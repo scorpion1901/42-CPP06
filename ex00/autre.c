@@ -114,3 +114,92 @@ int main(void)
         //     std::cout << "float = " << static_cast<float>(nb2) << "f" << std::endl;
         //     std::cout << "double = " << nb2 << std::endl;
         // }
+
+
+// static double toDouble(const std::string& str)
+// {
+//     std::stringstream ss(str);
+//     double d;
+//     ss >> d;
+//     if (ss.fail())
+//     {
+//         std::cout << "conversion to double fail" << std::endl;
+//         exit (1);
+//     }
+//     return d;
+// }
+
+void ScalarConverter::convert(const char* cmd)
+{
+    double nb2 = 0;
+    
+    if (!parsing(cmd))
+    {
+        std::cout << "probleme parsing" << std::endl;
+        return ;
+    }
+    if ((cmd[0] < 48 || cmd[0] > 57) && cmd[1] == '\0')
+        nb2 = static_cast<int>(cmd[0]);
+    else if (whats_the(cmd) == 1 || whats_the(cmd) == 2)
+    {
+        // nb2 = toDouble(cmd);
+        nb2 = strtod(cmd, NULL);
+    }
+    else if (whats_the(cmd) == 0)
+    {
+        std::cout << "too much charactere" << std::endl;
+        return ;
+    }
+    else
+    {
+        // nb2 = std::atoi(cmd);
+        nb2 = strtod(cmd, NULL);
+        // nb2 = std::atoi(cmd.c_str());
+    }
+
+    // if (!parsing(cmd))
+    // {
+    //     std::cout << "probleme parsing" << std::endl;
+    //     return (0);
+    // }
+    // if ((cmd[0] < 48 || cmd[0] > 57) && cmd[1] == '\0')
+    //     nb2 = static_cast<int>(cmd[0]);
+    // else if (whats_the(cmd) == 1 || whats_the(cmd) == 2)
+    // {
+    //     nb2 = toDouble(cmd);
+    // }
+    // else if (whats_the(cmd) == 0)
+    // {
+    //     std::cout << "too much charactere" << std::endl;
+    //     return (0);
+    // }
+    // else
+    //     nb2 = std::atoi(cmd.c_str());
+    // if (nb2 == 0.0)
+    // {
+    //     std::cout << "char = Non displayable" << std::endl;
+    //     std::cout << "int = 0" << std::endl;
+    //     std::cout << "float = 0.0f" << std::endl;
+    //     std::cout << "double = 0.0" << std::endl;
+    // }
+    // else
+    // {
+    //     if (nb2 > 32 && nb2 < 127)
+    //         std::cout << "char = " << static_cast<char>(nb2) << std::endl;
+    //     else if (nb > 127 || nb < 0)
+    //         std::cout << "char = impossible" << std::endl;
+    //     else
+    //         std::cout << "char = Non displayable" << std::endl;
+    //     if (nb2 > INT_MAX || nb2 < INT_MIN)
+    //         std::cout << "int = impossible" << std::endl;
+    //     else
+    //         std::cout << "int = " << static_cast<int>(nb2) << std::endl;
+    //     if (nb2 > FLT_MAX || nb2 < -FLT_MAX)
+    //         std::cout << "float = impossible" << std::endl;
+    //     else
+    //         std::cout << "float = " << static_cast<float>(nb2) << "f" << std::endl;
+    //     if (nb2 > DBL_MAX || nb2 < -DBL_MAX)
+    //         std::cout << "double = impossible" << std::endl;
+    //     else
+    //         std::cout << "double = " << nb2 << std::endl;
+    // }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 10:38:34 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/13 13:24:04 by radlouni         ###   ########.fr       */
+/*   Created: 2025/11/13 13:31:05 by radlouni          #+#    #+#             */
+/*   Updated: 2025/11/13 13:33:24 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+#define SERIALIZER_HPP
 
 #include <string>
 #include <iostream>
@@ -23,15 +23,15 @@
 #include <iomanip>
 
 
-class ScalarConverter {
+class Serializer {
 private:
-    ScalarConverter();
-    ScalarConverter(ScalarConverter const &);
-    ScalarConverter &operator=(ScalarConverter const &);
-    ~ScalarConverter();
+    Serializer();
+    Serializer(Serializer const &);
+    Serializer &operator=(Serializer const &);
+    ~Serializer();
 
 public:
-    static void convert(const char* cmd);
+    uintptr_t serialize(Data *ptr);
 };
 
 int parsing(std::string str);

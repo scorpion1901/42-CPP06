@@ -1,24 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 10:37:35 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/13 13:14:00 by radlouni         ###   ########.fr       */
+/*   Created: 2025/11/13 13:34:24 by radlouni          #+#    #+#             */
+/*   Updated: 2025/11/13 13:34:36 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int main(int argc, char **cmd)
-{
-    if (argc != 2)
-    {
-        std::cout << "error nb argument" << std::endl;
-        return (0);
-    }
-    ScalarConverter::convert(cmd[1]);
-    return (0);
-}

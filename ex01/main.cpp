@@ -5,20 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 10:37:35 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/13 13:14:00 by radlouni         ###   ########.fr       */
+/*   Created: 2025/11/13 13:29:47 by radlouni          #+#    #+#             */
+/*   Updated: 2025/11/13 13:35:09 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int main(int argc, char **cmd)
+int main(void)
 {
-    if (argc != 2)
-    {
-        std::cout << "error nb argument" << std::endl;
-        return (0);
-    }
-    ScalarConverter::convert(cmd[1]);
+
+
+    
     return (0);
 }
