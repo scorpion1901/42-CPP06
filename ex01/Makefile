@@ -6,7 +6,7 @@
 #    By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:29:24 by radlouni          #+#    #+#              #
-#    Updated: 2025/11/13 13:29:38 by radlouni         ###   ########.fr        #
+#    Updated: 2025/11/13 17:08:35 by radlouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,8 @@ NAME = Serializer
 CC = c++
 CPPFLAGS = -Wextra -Werror -Wall -g3 -std=c++98
 
-SRCS = ScalarConverter.cpp \
-	parsing.cpp \
+SRCS = Serializer.cpp \
 	main.cpp
-
 
 OBJS = ${SRCS:.cpp=.o}
 

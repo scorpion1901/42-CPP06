@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:31:05 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/13 13:33:24 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:18:07 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
+#include <stdint.h>
 #include <string>
 #include <iostream>
 #include <limits>
@@ -22,6 +23,11 @@
 #include <cfloat>
 #include <iomanip>
 
+struct Data
+{
+    int         age;
+    std::string name;
+};
 
 class Serializer {
 private:
@@ -31,9 +37,8 @@ private:
     ~Serializer();
 
 public:
-    uintptr_t serialize(Data *ptr);
+    static uintptr_t   serialize(Data *ptr);
+    static Data*       deserialize(uintptr_t raw);
 };
-
-int parsing(std::string str);
 
 #endif
