@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 18:21:35 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/14 20:34:34 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/14 21:05:27 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <cfloat>
 #include <iomanip>
 #include <typeinfo>
+#include <ctime>
 
 
 class Base {

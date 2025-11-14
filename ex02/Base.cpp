@@ -6,7 +6,7 @@
 /*   By: radlouni <radlouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 18:49:50 by radlouni          #+#    #+#             */
-/*   Updated: 2025/11/14 20:30:57 by radlouni         ###   ########.fr       */
+/*   Updated: 2025/11/14 20:55:59 by radlouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ Base*    Base::generate(void)
 void     Base::identify(Base* p)
 {
     if (dynamic_cast<A*>(p))
-        std::cout << "c'est une base de type A" << std::endl;
+        std::cout << "c'est un pointeur de type A" << std::endl;
     else if (dynamic_cast<B*>(p))
-        std::cout << "c'est une base de type B" << std::endl;
+        std::cout << "c'est un pointeur de type B" << std::endl;
     else if (dynamic_cast<C*>(p))
-        std::cout << "c'est une base de type C" << std::endl;
+        std::cout << "c'est un pointer de type C" << std::endl;
     else
         std::cout << "ce pointeur ne correspont a aucune Base" << std::endl;
 }
@@ -73,7 +73,7 @@ void     Base::identify(Base& p)
     {
         A& a = dynamic_cast<A&>(p);
         (void)a;
-        std::cout << "c'est une base de type A" << std::endl;
+        std::cout << "c'est une reference de type A" << std::endl;
     }
     catch (std::bad_cast&) {}
 
@@ -81,7 +81,7 @@ void     Base::identify(Base& p)
     {
         B& b = dynamic_cast<B&>(p);
         (void)b;
-        std::cout << "c'est une base de type B" << std::endl;
+        std::cout << "c'est une reference de type B" << std::endl;
     }
     catch (std::bad_cast&) {}
 
@@ -89,7 +89,7 @@ void     Base::identify(Base& p)
     {
         C& c = dynamic_cast<C&>(p);
         (void)c;
-        std::cout << "c'est une base de type C" << std::endl;
+        std::cout << "c'est une reference de type C" << std::endl;
     }
     catch (std::bad_cast&) {}
 }
